@@ -10,8 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  scan_gun:
-    path: ../
+  scan_gun: ^1.0.0
 
 dev_dependencies:
   flutter_test:
