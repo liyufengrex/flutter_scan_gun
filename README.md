@@ -1,4 +1,4 @@
-## Flutter 扫码枪支持
+## flutter：实现扫码枪获取数据源，禁止系统键盘弹窗
 
 本 `package` 依赖 `EditableText` 原理，实现 flutter 端扫码能力支持。
 
