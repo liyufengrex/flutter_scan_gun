@@ -55,6 +55,8 @@ class InputWithKeyboardWidgetState extends State<InputWithKeyboardWidget> {
     if (widget.onSubmit != null) {
       widget.onSubmit!(value);
     }
+    //清空本次结果，要求每次都是独立的结果
+    controller.clear();
     //结束后继续获取焦点
     requestKeyboard();
   }
