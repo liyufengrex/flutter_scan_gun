@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'input/input_with_keyboard_widget.dart';
 
@@ -41,6 +42,7 @@ class _ScanMonitorWidgetState extends State<ScanMonitorWidget> {
     if (widget.textFiledNode != null && !widget.textFiledNode!.hasFocus) {
       //当外部 textFiled 焦点取消后，马上切换为扫码的焦点
       scanNode.requestFocus();
+      SystemChannels.textInput.invokeMethod('TextInput.hide');
     }
   }
 

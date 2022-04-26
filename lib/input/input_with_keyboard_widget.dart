@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:scan_gun/forbid_keypad_window/editable_text.dart'
     as forbid; //禁止键盘弹出的 EditableText
 
@@ -57,6 +58,7 @@ class InputWithKeyboardWidgetState extends State<InputWithKeyboardWidget> {
     }
     //清空本次结果，要求每次都是独立的结果
     controller.clear();
+    SystemChannels.textInput.invokeMethod('TextInput.hide');
     //结束后继续获取焦点
     requestKeyboard();
   }

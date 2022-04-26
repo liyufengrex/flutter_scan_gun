@@ -1,6 +1,6 @@
 name: scan_gun
 description: flutter实现扫码枪获取数据，禁止系统键盘弹窗
-version: 1.0.4
+version: 1.0.5
 author: lixiaohong<liyufengisme@gmail.com>
 homepage: https://github.com/liyufengrex/flutter_scan_gun
 
