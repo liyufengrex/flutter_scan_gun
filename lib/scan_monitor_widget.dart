@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'input/input_with_keyboard_widget.dart';
+import 'input/text_input_focus_node.dart';
 
 ///扫码监听（包含TextFiled与scan同时存在的场景）
 class ScanMonitorWidget extends StatefulWidget {
   final ChildBuilder childBuilder;
-  final FocusNode? scanNode;
+  final TextInputFocusNode? scanNode;
   final FocusNode? textFiledNode;
   final void Function(String) onSubmit;
 
@@ -23,12 +23,12 @@ class ScanMonitorWidget extends StatefulWidget {
 }
 
 class _ScanMonitorWidgetState extends State<ScanMonitorWidget> {
-  late final FocusNode scanNode;
+  late final TextInputFocusNode scanNode;
 
   @override
   void initState() {
     super.initState();
-    scanNode = widget.scanNode ?? FocusNode();
+    scanNode = widget.scanNode ?? TextInputFocusNode();
     widget.textFiledNode?.addListener(_listenTextFiledFocus);
   }
 

@@ -7,9 +7,18 @@
 在pubspec.yaml文件中进行引用：
 ```
 dependencies:
-  scan_gun: ^1.0.0
+  scan_gun: ^2.0.0
 ```
 ### 使用方式：
+
+在 main 方法中初始化 TextInputBinding
+```
+ void main() {
+   TextInputBinding();
+   runApp(const MyApp());
+ }
+```
+
 提供 `ScanMonitorWidget` 作为父节点，嵌套使用：
 
 ```

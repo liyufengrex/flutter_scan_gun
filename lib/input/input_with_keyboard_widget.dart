@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:scan_gun/forbid_keypad_window/editable_text.dart'
-    as forbid; //禁止键盘弹出的 EditableText
+
+import 'text_input_focus_node.dart';
 
 typedef ChildBuilder = Widget Function(BuildContext context);
 
@@ -9,7 +9,7 @@ typedef ChildBuilder = Widget Function(BuildContext context);
 class InputWithKeyboardWidget extends StatefulWidget {
   //非必传，如果传，可通过focusNode监听获取当前扫码可用状态，hasFocus时为可用；
   //也可通过 focusNode requestFocus 方法，强制扫码获取焦点，保证扫码能力；
-  final FocusNode? focusNode;
+  final TextInputFocusNode? focusNode;
   final ChildBuilder? childBuilder;
   final void Function(String)? onSubmit;
 
@@ -26,15 +26,15 @@ class InputWithKeyboardWidget extends StatefulWidget {
 
 class InputWithKeyboardWidgetState extends State<InputWithKeyboardWidget> {
   final controller = TextEditingController();
-  late final FocusNode focusNode;
+  late final TextInputFocusNode focusNode;
   late final Widget edtWidget;
 
   @override
   void initState() {
     super.initState();
-    focusNode = widget.focusNode ?? FocusNode();
+    focusNode = widget.focusNode ?? TextInputFocusNode();
     edtWidget = RepaintBoundary(
-      child: forbid.EditableText(
+      child: EditableText(
         controller: controller,
         focusNode: focusNode,
         style: const TextStyle(color: Colors.white),

@@ -1,7 +1,9 @@
 import 'package:example/test_scan_gun_withod_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:scan_gun/scan_gun.dart';
 
 void main() {
+  TextInputBinding();
   runApp(const MyApp());
 }
 
