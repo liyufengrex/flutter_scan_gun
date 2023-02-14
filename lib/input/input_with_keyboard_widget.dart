@@ -11,6 +11,7 @@ class InputWithKeyboardWidget extends StatefulWidget {
   //也可通过 focusNode requestFocus 方法，强制扫码获取焦点，保证扫码能力；
   final TextInputFocusNode? focusNode;
   final ChildBuilder? childBuilder;
+  final GlobalKey<EditableTextState> editableKey;
   final void Function(String)? onSubmit;
 
   const InputWithKeyboardWidget({
@@ -18,6 +19,7 @@ class InputWithKeyboardWidget extends StatefulWidget {
     this.childBuilder,
     this.onSubmit,
     this.focusNode,
+    required this.editableKey,
   }) : super(key: key);
 
   @override
@@ -35,6 +37,7 @@ class InputWithKeyboardWidgetState extends State<InputWithKeyboardWidget> {
     focusNode = widget.focusNode ?? TextInputFocusNode();
     edtWidget = RepaintBoundary(
       child: EditableText(
+        key: widget.editableKey,
         controller: controller,
         focusNode: focusNode,
         style: const TextStyle(color: Colors.white),

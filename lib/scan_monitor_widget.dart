@@ -8,14 +8,22 @@ class ScanMonitorWidget extends StatefulWidget {
   final ChildBuilder childBuilder;
   final TextInputFocusNode? scanNode;
   final FocusNode? textFiledNode;
+  final GlobalKey<EditableTextState>? scanKey;
   final void Function(String) onSubmit;
+
+  //是否开启焦点轮询
+  final bool focusLooper;
+  final Duration focusLooperDuration;
 
   const ScanMonitorWidget({
     Key? key,
     required this.childBuilder,
     this.scanNode,
     this.textFiledNode,
+    this.scanKey,
     required this.onSubmit,
+    this.focusLooper = true,
+    this.focusLooperDuration = const Duration(seconds: 2),
   }) : super(key: key);
 
   @override
@@ -24,11 +32,13 @@ class ScanMonitorWidget extends StatefulWidget {
 
 class _ScanMonitorWidgetState extends State<ScanMonitorWidget> {
   late final TextInputFocusNode scanNode;
+  late final GlobalKey<EditableTextState> scanKey;
 
   @override
   void initState() {
     super.initState();
     scanNode = widget.scanNode ?? TextInputFocusNode();
+    scanKey = widget.scanKey ?? GlobalKey<EditableTextState>();
     widget.textFiledNode?.addListener(_listenTextFiledFocus);
   }
 
@@ -42,6 +52,7 @@ class _ScanMonitorWidgetState extends State<ScanMonitorWidget> {
     if (widget.textFiledNode != null && !widget.textFiledNode!.hasFocus) {
       //当外部 textFiled 焦点取消后，马上切换为扫码的焦点
       scanNode.requestFocus();
+      scanKey.currentState?.requestKeyboard();
       SystemChannels.textInput.invokeMethod('TextInput.hide');
     }
   }
@@ -50,6 +61,7 @@ class _ScanMonitorWidgetState extends State<ScanMonitorWidget> {
   Widget build(BuildContext context) {
     return InputWithKeyboardWidget(
       focusNode: scanNode,
+      editableKey: scanKey,
       onSubmit: (value) {
         widget.onSubmit(value);
       },

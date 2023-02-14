@@ -38,8 +38,12 @@ dependencies:
 
 + scanNode:
 
-1. 非必传，如果传，可通过 `scanNode` 监听获取当前扫码可用状态，`hasFocus` 时为可用
-2. 也可通过 `scanNode` requestFocus 方法，强制扫码获取焦点，保证扫码能力；
+非必传，如果传，可通过 `scanNode` 监听获取当前扫码可用状态，`hasFocus` 时为获取焦点
+
++ GlobalKey<EditableTextState> scanKey:
+
+非必传，如果传，可通过 'scanKey' 强制获取获取焦点，保证扫码可用，如下
+`scanKey.currentState?.requestKeyboard()`
 
 + textFiledNode:
 
