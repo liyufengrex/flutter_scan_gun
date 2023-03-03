@@ -99,4 +99,4 @@ TextEditingController controller = TextEditingController();
 ### 详细使用方式可查看 example ：
 ![](https://upload-images.jianshu.io/upload_images/25776880-f1664d5a2e720761.gif?imageMogr2/auto-orient/strip)
 
-[技术点分析](https://www.jianshu.com/p/33675f2c352f)
+[技术点分析](https://juejin.cn/post/7186991958638723132)
