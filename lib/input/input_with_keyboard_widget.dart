@@ -64,7 +64,7 @@ class InputWithKeyboardWidgetState extends State<InputWithKeyboardWidget> {
     controller.clear();
     SystemChannels.textInput.invokeMethod('TextInput.hide');
     //结束后继续获取焦点
-    requestKeyboard();
+    // requestKeyboard();
   }
 
   @override
@@ -75,7 +75,10 @@ class InputWithKeyboardWidgetState extends State<InputWithKeyboardWidget> {
     return Stack(
       children: [
         //让输入框保持隐藏
-        Offstage(child: edtWidget, offstage: true),
+        Offstage(
+          child: edtWidget,
+          offstage: true,
+        ),
         child,
       ],
     );

@@ -44,6 +44,7 @@ class _TestScanGunState extends State<TestScanGun> {
       childBuilder: (context) {
         return body();
       },
+      // focusLooper: true,
       onSubmit: (String result) {
         //接收到扫码结果
         setState(() {
