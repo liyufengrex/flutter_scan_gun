@@ -40,7 +40,7 @@ class InputWithKeyboardWidgetState extends State<InputWithKeyboardWidget> {
         key: widget.editableKey,
         controller: controller,
         focusNode: focusNode,
-        keyboardType: TextInputType.visiblePassword,
+        keyboardType: TextInputType.datetime,
         style: const TextStyle(color: Colors.white),
         cursorColor: Colors.white,
         backgroundCursorColor: Colors.white,
